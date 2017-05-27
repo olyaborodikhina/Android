@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/Welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/double_margin"
+        android:textSize="@dimen/large_text"
+        android:textColor="@color/secondary"
+        android:text="@string/title_text_welcome"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/base_margin"
+        android:textSize="@dimen/medium_text"
+        android:textColor="@color/primary"
+        android:padding="@dimen/input_padding"
+        android:hint="@string/base_hint_username"
+        android:singleLine="true"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/base_margin"
+        android:textSize="@dimen/medium_text"
+        android:textColor="@color/primary"
+        android:padding="@dimen/input_padding"
+        android:hint="@string/base_hint_password"
+        android:inputType="textPassword"
+        android:singleLine="true"/>
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/base_margin"
+        android:text="@string/button_text"
+        android:textSize="@dimen/medium_text" />
+
+    <TextView
+        android:id="@+id/Registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/double_margin"
+        android:textSize="@dimen/medium_text"
+        android:text="@string/title_text_registration"
+        android:clickable="true"
+        android:textColor="@color/text_color_selector"/>
+
+</LinearLayout>
