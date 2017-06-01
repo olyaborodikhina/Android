@@ -41,21 +41,26 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 String passwordStr = passwordReg.getText().toString().trim();
                 String repeatPasswordStr = repeatPasswordReg.getText().toString().trim();
 
-                //проверка заполненности полей
+                //1)проверка заполненности полей
                 if ((usernameStr.length() == 0) || (passwordStr.length() == 0) || (repeatPasswordStr.length() == 0)) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Please fill in all fields", Toast.LENGTH_SHORT);
                     toast.show();
-                }else {
+                }else
                     //проверка на совпадение паролей
-                    if (passwordStr.equals(repeatPasswordStr)) {
-                        Intent intentToStartActivity = new Intent(this, NewActivity.class);
-                        startActivity(intentToStartActivity);
-
-                    } else {
+                    if (!passwordStr.equals(repeatPasswordStr)) {
                         Toast toast1 = Toast.makeText(getApplicationContext(), "Passwords should match", Toast.LENGTH_SHORT);
                         toast1.show();
 
                     }
+                    else
+                    //проверка 3 - Если пользователь с именем введённым в поле Username уже зарегистрирован в системе вывести сообщение “User already exists”
+                   if(true)
+                       return;
+
+                else{//Если ни одно из условий пунктов 1-3 не выполняется, то необходимо перевести пользователя на экран “Shapes list”, очистив back stack.
+                    Intent intent = new Intent(this, NewActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 }
             }
             break;
