@@ -77,9 +77,4 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             break;
         }
     }
-
-    @Override
-    public void unregisterComponentCallbacks(ComponentCallbacks callback) {
-        super.unregisterComponentCallbacks(callback);
-    }
 }
