@@ -1,6 +1,8 @@
 package com.example.exam;
 
+import android.content.ComponentCallbacks;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,6 +18,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     private Button signUpReg;
     private EditText usernameReg,passwordReg,repeatPasswordReg;
+    private SharedPreferences prefs;
+    public static String AUTH_NAME = "AUTH_NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         passwordReg = (EditText) findViewById(R.id.passwordReg);
 
         repeatPasswordReg = (EditText) findViewById(R.id.repeat_password);
+
+        prefs = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
     }
 
     @Override
@@ -54,10 +60,15 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                     }
                     else
                     //проверка 3 - Если пользователь с именем введённым в поле Username уже зарегистрирован в системе вывести сообщение “User already exists”
-                   if(true)
-                       return;
+                   if(prefs.contains(usernameStr)){
+                       Toast toast1 = Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_SHORT);
+                       toast1.show();
+                   }
 
-                else{//Если ни одно из условий пунктов 1-3 не выполняется, то необходимо перевести пользователя на экран “Shapes list”, очистив back stack.
+
+                else{//Если ни одно из условий пунктов 1-3 не выполняется, то необходимо перевести пользователя на экран “Shapes list”, очистив back stack.prefs.edit().putString(name, password).apply();
+                       prefs.edit().putString(usernameStr, passwordStr).apply();
+                       prefs.edit().putString(AUTH_NAME, usernameStr).apply();
                     Intent intent = new Intent(this, NewActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
@@ -65,5 +76,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             }
             break;
         }
+    }
+
+    @Override
+    public void unregisterComponentCallbacks(ComponentCallbacks callback) {
+        super.unregisterComponentCallbacks(callback);
     }
 }
