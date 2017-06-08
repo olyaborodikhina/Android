@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shape_item_height"
+        android:background="@color/shape_item_background_color">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="@dimen/shape_item_border_width"
+            android:layout_height="@dimen/shape_item_border_width"
+            android:background="@color/shape_item_background_color">
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/shape_item_padding"
+                android:gravity="center"
+                android:background="@drawable/shape_layer">
+            </ImageView>
+        </LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/shape_item_border_height"
+            android:background="@color/shape_item_background_color">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/shape_item_padding"
+                android:textSize="@dimen/shape_item_title_font_size"
+                android:textColor="@color/primary"
+                android:text="Title"/>
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/shape_item_padding"
+                android:textSize="@dimen/shape_item_description_font_size"
+                android:textColor="@color/secondary"
+                android:text="Description"/>
+            </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginBottom="@dimen/shape_item_margin"
+        android:background="@drawable/shadow"/>
+</LinearLayout>
