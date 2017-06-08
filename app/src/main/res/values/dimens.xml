@@ -5,5 +5,22 @@
     <dimen name = "base_margin">30dp</dimen>
     <dimen name="medium_text">16sp</dimen>
     <dimen name="input_padding">16dp</dimen>
+    <dimen name="twentySp">20sp</dimen>
+    <dimen name="field">16sp</dimen>
+    <dimen name="height_item">102dp</dimen>
+    <!--Recycle view items dimens-->
+    <dimen name="shape_item_height">102dp</dimen>
+    <dimen name="shape_item_shadow">4dp</dimen>
+    <dimen name="shape_item_margin">8dp</dimen>
+    <dimen name="shape_item_border_height">88dp</dimen>
+    <dimen name="shape_item_border_width">88dp</dimen>
+    <dimen name="shape_item_border_thickness">2dp</dimen>
+    <dimen name="shape_item_border_rounding">4dp</dimen>
+    <dimen name="shape_item_shape_height">72dp</dimen>
+    <dimen name="shape_item_shape_width">72dp</dimen>
+    <dimen name="shape_item_line_height">15dp</dimen>
+    <dimen name="shape_item_title_font_size">16sp</dimen>
+    <dimen name="shape_item_description_font_size">16sp</dimen>
+    <dimen name="shape_item_padding">8dp</dimen>
 
 </resources>

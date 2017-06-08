@@ -2,20 +2,32 @@ package com.example.exam;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
 
 /**
  * Created by Ольга on 20.05.2017.
  */
 
 public class NewActivity extends AppCompatActivity implements View.OnClickListener {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.share_list);
+
+        initViews();
+    }
+
+    private void initViews() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false);
+
     }
 
     @Override
@@ -47,4 +59,5 @@ public class NewActivity extends AppCompatActivity implements View.OnClickListen
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

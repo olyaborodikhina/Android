@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id = "@+id/Plus"
+        android:icon="@drawable/ic_add_black_24dp"
+        android:title="@string/Add"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:icon="@drawable/ic_more_vert_black_24dp"
+        android:title="@string/menu_more"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id = "@+id/logOut"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/logOut"
+                app:showAsAction="ifRoom"/>
+        </menu>
+    </item>
+</menu>

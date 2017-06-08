@@ -2,12 +2,25 @@
 <string name="app_name">Exam</string>
 <string name="action_settings">Settings</string>
 <string  name ="title_text_welcome">Welcome!</string>
+    <string name="add">Press “+” to add some shapes</string>
 <string name="base_hint_username">Username</string>
 <string name="base_hint_password">Password</string>
+    <string name="base_hint_repeat_password">Repeat Password</string>
 <string name="button_text">LOG IN</string>
+    <string name="button_signUp">SIGN UP</string>
 <string name="title_text_registration">Registration</string>
     <string name="signUp">Sign Up</string>
     <string name="share_list">Share List </string>
-
+    <string name="action_item_1">New</string>
+    <string name="action_item_2">More</string>
+    <string name= "logOut"> Log out</string>
+    <string name="Add">Add </string>
+    <string name="choose_shape">Choose shape</string>
+    <string name="choose_color">Choose color</string>
+    <string name="add_title">Title</string>
+    <string name="add_description">Description</string>
+    <string name="ADD">ADD</string>
+    <string name="menu_more">More</string>
+    <string name="Type_here">Type here...</string>
 
 </resources>

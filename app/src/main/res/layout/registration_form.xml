@@ -1,8 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
-    
+    <EditText
+        android:id="@+id/usernameReg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/base_margin"
+        android:textSize="@dimen/medium_text"
+        android:textColor="@color/primary"
+        android:padding="@dimen/input_padding"
+        android:hint="@string/base_hint_username"
+        android:singleLine="true"
+        android:maxLength="20"/>
+
+    <EditText
+        android:id="@+id/passwordReg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/base_margin"
+        android:textSize="@dimen/medium_text"
+        android:textColor="@color/primary"
+        android:padding="@dimen/input_padding"
+        android:hint="@string/base_hint_password"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:maxLength="30"/>
+
+    <EditText
+        android:id="@+id/repeat_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/base_margin"
+        android:textSize="@dimen/medium_text"
+        android:textColor="@color/primary"
+        android:padding="@dimen/input_padding"
+        android:hint="@string/base_hint_repeat_password"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:maxLength="30"/>
+
+    <Button
+        android:id="@+id/signUpReg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/base_margin"
+        android:text="@string/button_signUp"
+        android:textSize="@dimen/medium_text" />
+
+
 
 </LinearLayout>
