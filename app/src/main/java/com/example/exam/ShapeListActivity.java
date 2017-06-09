@@ -47,7 +47,7 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
     public void saveShape(Shape shape) {
         ArrayList<Shape> shapes = getShapes();
         shapes.add(shape);
-        String name = prefs.getString(AUTH_NAME, usernameStr);
+        String name = prefs.getString(AUTH_NAME, "");
         String result = "";
         for (int i = 0; i < shapes.size(); i++) {
             result = result + shapes.get(i).toString();

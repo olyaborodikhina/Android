@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     toast.show();
                 }else if(is == CHECK_SUCCESS){//передадим имя пользователя ShapeListActivity для SharedList
                     Intent intentToStartActivity = new Intent(this, ShapeListActivity.class);
-                    intentToStartActivity.putExtra("username", usernameStr);
+                   // intentToStartActivity.putExtra("username", usernameStr);
                     startActivity(intentToStartActivity);
                 }
                 break;

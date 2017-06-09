@@ -69,7 +69,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                        prefs.edit().putString(usernameStr, passwordStr).apply();
                        prefs.edit().putString(AUTH_NAME, usernameStr).apply();
                     Intent intent = new Intent(this, ShapeListActivity.class);
-                       intent.putExtra("username", usernameStr);
+                      // intent.putExtra("username", usernameStr);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
