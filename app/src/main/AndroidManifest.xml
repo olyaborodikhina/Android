@@ -20,7 +20,7 @@
         </activity>
 
         <activity
-            android:name=".NewActivity"
+            android:name=".ShapeListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActBar"
             android:label="@string/share_list"

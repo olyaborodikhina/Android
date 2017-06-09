@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+
         switch (v.getId()) {
             case R.id.signUp:
                 String usernameStr = username.getText().toString().trim();
@@ -63,8 +64,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }else if(is==CHECK_WRONG_PASSWORD) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Wrong password", Toast.LENGTH_SHORT);
                     toast.show();
-                }else if(is == CHECK_SUCCESS){
-                    Intent intentToStartActivity = new Intent(this, NewActivity.class);
+                }else if(is == CHECK_SUCCESS){//передадим имя пользователя ShapeListActivity для SharedList
+                    Intent intentToStartActivity = new Intent(this, ShapeListActivity.class);
+                    intentToStartActivity.putExtra("username", usernameStr);
                     startActivity(intentToStartActivity);
                 }
                 break;

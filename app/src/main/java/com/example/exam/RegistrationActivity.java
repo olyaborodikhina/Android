@@ -1,6 +1,5 @@
 package com.example.exam;
 
-import android.content.ComponentCallbacks;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -69,7 +68,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 else{//Если ни одно из условий пунктов 1-3 не выполняется, то необходимо перевести пользователя на экран “Shapes list”, очистив back stack.prefs.edit().putString(name, password).apply();
                        prefs.edit().putString(usernameStr, passwordStr).apply();
                        prefs.edit().putString(AUTH_NAME, usernameStr).apply();
-                    Intent intent = new Intent(this, NewActivity.class);
+                    Intent intent = new Intent(this, ShapeListActivity.class);
+                       intent.putExtra("username", usernameStr);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }

@@ -2,6 +2,7 @@ package com.example.exam;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.annotation.Nullable;
 
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,8 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
     private AppCompatSpinner spinnerRectangel,spinnerColor;
 
     private EditText titleText,descriptionText;
-    private TextView chooseShape,chooseColor,addTitle,addDescription;
+    private TextView chooseColor,addDescription;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,9 +51,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
 
         titleText = (EditText) findViewById(R.id.Title_text);
         descriptionText = (EditText) findViewById(R.id.Description_text);
-        chooseShape = (TextView) findViewById(R.id.Choose_shape);
         chooseColor = (TextView) findViewById(R.id.Choose_color);
-        addTitle = (TextView) findViewById(R.id.add_title);
         addDescription = (TextView) findViewById(R.id.add_Description);
     }
 
@@ -61,24 +61,31 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
             case R.id.add:
                 String titleTextStr = titleText.getText().toString();
                 String descriptionStr = descriptionText.getText().toString();
-                String chooseShapeStr = chooseShape.getText().toString();
                 String  chooseColorStr = chooseColor.getText().toString();
-                String addTitleStr = addTitle.getText().toString();
                 String addDescriptionStr = addDescription.getText().toString();
+                String color = spinnerColor.getSelectedItem().toString();
+                String type = spinnerColor.getSelectedItem().toString();
+
 
                 //Если хотя бы одно из полей не заполнено
                 if((titleTextStr.length() == 0) || (descriptionStr.length() == 0) ||
-                        (chooseColorStr.length() == 0) || (chooseShapeStr.length() == 0) ||
-                        (addTitleStr.length() == 0) || (addDescriptionStr.length() == 0)){
-//                if((addTitleStr.length() == 0) || (addDescriptionStr.length() == 0)){
+                        (chooseColorStr.length() == 0) ||  (addDescriptionStr.length() == 0)){
+
                     Toast toast = Toast.makeText(getApplicationContext(), "Please fill in all fields", Toast.LENGTH_SHORT);
                     toast.show();
-                }else {
-                    Intent intent = new Intent(this, NewActivity.class);
-                    startActivity(intent);
+                }else {//добавление фигуры
+
+                    startShapeScreen(titleTextStr,descriptionStr,color,type);
                 }
                 break;
 
         }
+    }
+
+    public void startShapeScreen(String title, String description, String color, String type){
+        Shape shape = new Shape(type,color,title,description);
+        Intent intent = new Intent(this, ShapeListActivity.class);
+        intent.putExtra("AUTH_NAME", shape);
+        startActivity(intent);
     }
 }
