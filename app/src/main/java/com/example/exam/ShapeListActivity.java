@@ -25,7 +25,6 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
 
     private RecyclerView shapeList;
     private SharedPreferences prefs;
-    private String usernameStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +32,10 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.share_list);
         prefs = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
 
-        Intent intent = getIntent();
-        usernameStr = intent.getStringExtra("usernameStr");
-
         if (getIntent().getExtras() != null) {
             Shape shape = (Shape) getIntent()
                     .getSerializableExtra(AUTH_NAME);
-            saveShape(shape);//Не нужно ли передавать userName
+            saveShape(shape);
             initViews();
         }
     }
@@ -60,27 +56,29 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
     }
 
     public ArrayList<Shape> getShapes() {
-        String title;
-        String type;
-        String color;
-        String description;
+        String title = "";
+        String type = "";
+        String color = "";
+        String description = "";
 
         ArrayList<Shape> list = new ArrayList<>();
         String[] source =
                 prefs.getString(AUTH_NAME, "").split("__-__");
 
-//        for (int i = 0; i < source.length; i++) {
-           // if (!source[i].isEmpty()) {
-                type = source[0];
-                color = source[1];
-                title = source[2];
-                description = source[3];
+        for (int i = 0; i < source.length; i++) {
+           if (!source[i].isEmpty()) {
+               if (i == 0)
+                   type = source[0];
+               if (i == 1)
+                   color = source[1];
+               if (i == 2)
+                   title = source[2];
+               if (i == 3)
+                   description = source[3];
+           }
 
-                list.add(new Shape(type,color,title,description));
-
-            //}
-        // }
-
+          }
+            list.add(new Shape(type,color,title,description));
         return list;
 
     }
