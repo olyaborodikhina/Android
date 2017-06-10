@@ -1,5 +1,8 @@
 package com.example.exam;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 /**
@@ -40,5 +43,40 @@ public class Shape implements Serializable {
 
     public String getTitle(){
         return title;
+    }
+
+    public String convertToString() {
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("type", type);
+            json.put("color", color);
+            json.put("description",description );
+            json.put("title",title );
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return json.toString();
+    }
+
+    public Shape(String json) {
+        JSONObject object = null;
+        try {
+            object = new JSONObject(json);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (object != null) {
+
+            this.color = object.optString("color");
+            this.title = object.optString("title");
+            this.description = object.optString("description");
+            this.type = object.optString("type");
+
+        }
+
     }
 }

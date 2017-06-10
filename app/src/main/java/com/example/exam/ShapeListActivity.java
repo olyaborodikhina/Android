@@ -32,12 +32,13 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.share_list);
         prefs = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
 
-        if (getIntent().getExtras() != null) {
-            Shape shape = (Shape) getIntent()
-                    .getSerializableExtra(AUTH_NAME);
-            saveShape(shape);
-            initViews();
-        }
+//        if (getIntent().getExtras() != null) {
+//            Shape shape = (Shape) getIntent()
+//                    .getSerializableExtra(AUTH_NAME);
+//            saveShape(shape);
+//
+//        }
+        initViews();
     }
 
     public void saveShape(Shape shape) {
@@ -46,7 +47,7 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
         String name = prefs.getString(AUTH_NAME, "");
         String result = "";
         for (int i = 0; i < shapes.size(); i++) {
-            result = result + shapes.get(i).toString();
+            result = result + shapes.get(i).convertToString();
             if (i < shapes.size() - 1) {
                 result = result + "__-__";
             }
@@ -62,23 +63,15 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
         String description = "";
 
         ArrayList<Shape> list = new ArrayList<>();
+        String name = prefs.getString(AUTH_NAME, "");
         String[] source =
-                prefs.getString(AUTH_NAME, "").split("__-__");
+                prefs.getString(name+LIST_SUFFIX, "").split("__-__");
 
-        for (int i = 0; i < source.length; i++) {
-           if (!source[i].isEmpty()) {
-               if (i == 0)
-                   type = source[0];
-               if (i == 1)
-                   color = source[1];
-               if (i == 2)
-                   title = source[2];
-               if (i == 3)
-                   description = source[3];
-           }
-
-          }
-            list.add(new Shape(type,color,title,description));
+        for(int i = 0; i < source.length;i++){
+            if (!source[i].isEmpty()) {
+                list.add(new Shape(source[i]));
+            }
+        }
         return list;
 
     }
@@ -124,4 +117,17 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+        if (getIntent().getExtras() != null) {
+            Shape shape = (Shape) getIntent()
+                    .getSerializableExtra(AUTH_NAME);
+            saveShape(shape);
+            initViews();
+        }
+
+    }
 }
