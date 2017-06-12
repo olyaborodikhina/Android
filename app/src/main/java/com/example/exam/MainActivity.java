@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }else if(is == CHECK_SUCCESS){//передадим имя пользователя ShapeListActivity для SharedList
                     Intent intentToStartActivity = new Intent(this, ShapeListActivity.class);
                    // intentToStartActivity.putExtra("username", usernameStr);
+                    intentToStartActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intentToStartActivity);
                 }
                 break;

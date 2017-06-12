@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static com.example.exam.R.id.AddTitle;
+
 
 /**
  * Created by Ольга on 20.05.2017.
@@ -25,6 +27,7 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
 
     private RecyclerView shapeList;
     private SharedPreferences prefs;
+    private TextView AddTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +35,14 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.share_list);
         prefs = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
 
-//        if (getIntent().getExtras() != null) {
-//            Shape shape = (Shape) getIntent()
-//                    .getSerializableExtra(AUTH_NAME);
-//            saveShape(shape);
-//
-//        }
-        initViews();
+       AddTitle = (TextView) findViewById(R.id.AddTitle);
+        if (prefs.getString(AUTH_NAME, "").isEmpty()) {
+            Intent i = new Intent(this, MainActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+        }
+
+        //initViews();
     }
 
     public void saveShape(Shape shape) {
@@ -70,6 +74,7 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
         for(int i = 0; i < source.length;i++){
             if (!source[i].isEmpty()) {
                 list.add(new Shape(source[i]));
+                AddTitle.setVisibility(View.GONE);
             }
         }
         return list;
@@ -80,10 +85,14 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
         shapeList = (RecyclerView) findViewById(R.id.shapes_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false);
-        ShapeListAdapter adapter = new ShapeListAdapter(getShapes());
+        ArrayList<Shape> shapes = getShapes();
+        ShapeListAdapter adapter = new ShapeListAdapter(shapes);
         shapeList.setLayoutManager(layoutManager);
         shapeList.setAdapter(adapter);
 
+        if (shapes.size() > 0) {
+            AddTitle.setVisibility(View.GONE);
+        }
     }
 
 
@@ -103,6 +112,7 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
         switch (item.getItemId()) {
             case R.id.logOut://добавить проверку-  Если все поля заполнены
                 Intent intent = new Intent(this, MainActivity.class);
+                prefs.edit().putString(AUTH_NAME, "").apply();
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return true;
@@ -119,15 +129,8 @@ public class ShapeListActivity extends AppCompatActivity implements View.OnClick
 
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
-
-        if (getIntent().getExtras() != null) {
-            Shape shape = (Shape) getIntent()
-                    .getSerializableExtra(AUTH_NAME);
-            saveShape(shape);
-            initViews();
-        }
-
+    public void onResume() {
+        super.onResume();
+        initViews();
     }
 }
